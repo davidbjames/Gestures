@@ -5,15 +5,12 @@
 //  Created by David James on 2021-12-09.
 //
 
-import UIKit
+import C3
 
-class ViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
+class GesturesVc : ExtendedViewController<Theme>, SafeLayout {
+    func updateLayout(update: Update) {
+        PanView()
+            .in(view)
+            //.debugRuler(.grid)
     }
-
-
 }
-

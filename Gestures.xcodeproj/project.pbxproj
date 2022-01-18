@@ -7,15 +7,40 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E7B8FEC4276883F400D30AE8 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B8FEC3276883F400D30AE8 /* Theme.swift */; };
 		E7DA3B9927623CD3000E96CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DA3B9827623CD3000E96CE /* AppDelegate.swift */; };
 		E7DA3B9B27623CD3000E96CE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DA3B9A27623CD3000E96CE /* SceneDelegate.swift */; };
 		E7DA3B9D27623CD3000E96CE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DA3B9C27623CD3000E96CE /* ViewController.swift */; };
 		E7DA3BA027623CD3000E96CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7DA3B9E27623CD3000E96CE /* Main.storyboard */; };
 		E7DA3BA227623CD7000E96CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7DA3BA127623CD7000E96CE /* Assets.xcassets */; };
 		E7DA3BA527623CD7000E96CE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7DA3BA327623CD7000E96CE /* LaunchScreen.storyboard */; };
+		E7DA3BAE27623DF8000E96CE /* C3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7DA3BAD27623DF8000E96CE /* C3.framework */; };
+		E7DA3BAF27623DF8000E96CE /* C3.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E7DA3BAD27623DF8000E96CE /* C3.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E7DA3BB227623E05000E96CE /* C3_Objc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7DA3BB127623E05000E96CE /* C3_Objc.framework */; };
+		E7DA3BB327623E05000E96CE /* C3_Objc.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E7DA3BB127623E05000E96CE /* C3_Objc.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E7DA3BB527623E0A000E96CE /* Unilib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7DA3BB427623E0A000E96CE /* Unilib.framework */; };
+		E7DA3BB627623E0A000E96CE /* Unilib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E7DA3BB427623E0A000E96CE /* Unilib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E7DA3BB927623E5A000E96CE /* PanExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DA3BB827623E5A000E96CE /* PanExample.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		E7DA3BB027623DF8000E96CE /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				E7DA3BB327623E05000E96CE /* C3_Objc.framework in Embed Frameworks */,
+				E7DA3BB627623E0A000E96CE /* Unilib.framework in Embed Frameworks */,
+				E7DA3BAF27623DF8000E96CE /* C3.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		E7B8FEC3276883F400D30AE8 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		E7DA3B9527623CD3000E96CE /* Gestures.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gestures.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7DA3B9827623CD3000E96CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E7DA3B9A27623CD3000E96CE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +49,10 @@
 		E7DA3BA127623CD7000E96CE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E7DA3BA427623CD7000E96CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E7DA3BA627623CD7000E96CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E7DA3BAD27623DF8000E96CE /* C3.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = C3.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E7DA3BB127623E05000E96CE /* C3_Objc.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = C3_Objc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E7DA3BB427623E0A000E96CE /* Unilib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Unilib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E7DA3BB827623E5A000E96CE /* PanExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanExample.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +60,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7DA3BB227623E05000E96CE /* C3_Objc.framework in Frameworks */,
+				E7DA3BB527623E0A000E96CE /* Unilib.framework in Frameworks */,
+				E7DA3BAE27623DF8000E96CE /* C3.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +74,7 @@
 			children = (
 				E7DA3B9727623CD3000E96CE /* Gestures */,
 				E7DA3B9627623CD3000E96CE /* Products */,
+				E7DA3BAC27623DF8000E96CE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +89,43 @@
 		E7DA3B9727623CD3000E96CE /* Gestures */ = {
 			isa = PBXGroup;
 			children = (
+				E7DA3B9C27623CD3000E96CE /* ViewController.swift */,
+				E7DA3BB727623E3B000E96CE /* Views */,
+				E7DA3BBA27623EEC000E96CE /* Supporting */,
+			);
+			path = Gestures;
+			sourceTree = "<group>";
+		};
+		E7DA3BAC27623DF8000E96CE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E7DA3BB427623E0A000E96CE /* Unilib.framework */,
+				E7DA3BB127623E05000E96CE /* C3_Objc.framework */,
+				E7DA3BAD27623DF8000E96CE /* C3.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E7DA3BB727623E3B000E96CE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E7DA3BB827623E5A000E96CE /* PanExample.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E7DA3BBA27623EEC000E96CE /* Supporting */ = {
+			isa = PBXGroup;
+			children = (
+				E7B8FEC3276883F400D30AE8 /* Theme.swift */,
 				E7DA3B9827623CD3000E96CE /* AppDelegate.swift */,
 				E7DA3B9A27623CD3000E96CE /* SceneDelegate.swift */,
-				E7DA3B9C27623CD3000E96CE /* ViewController.swift */,
 				E7DA3B9E27623CD3000E96CE /* Main.storyboard */,
 				E7DA3BA127623CD7000E96CE /* Assets.xcassets */,
 				E7DA3BA327623CD7000E96CE /* LaunchScreen.storyboard */,
 				E7DA3BA627623CD7000E96CE /* Info.plist */,
 			);
-			path = Gestures;
+			name = Supporting;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -77,6 +138,7 @@
 				E7DA3B9127623CD3000E96CE /* Sources */,
 				E7DA3B9227623CD3000E96CE /* Frameworks */,
 				E7DA3B9327623CD3000E96CE /* Resources */,
+				E7DA3BB027623DF8000E96CE /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -140,6 +202,8 @@
 			files = (
 				E7DA3B9D27623CD3000E96CE /* ViewController.swift in Sources */,
 				E7DA3B9927623CD3000E96CE /* AppDelegate.swift in Sources */,
+				E7B8FEC4276883F400D30AE8 /* Theme.swift in Sources */,
+				E7DA3BB927623E5A000E96CE /* PanExample.swift in Sources */,
 				E7DA3B9B27623CD3000E96CE /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
