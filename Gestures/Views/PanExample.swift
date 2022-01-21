@@ -39,14 +39,12 @@ class PanView : View, Live, Themeable {
                 }
         }
     }
+    var implicitAnimation: ImplicitAnimationConfig? = .disabled
     class OutOfParentExample : Example {
-        class MyCustomPanGesture : PanGestureRecognizer {}
-        lazy var passthru:Passthrough<MyCustomPanGesture> = .init()
+        class MyPanGesture : PanGestureRecognizer {}
+        lazy var panUpdates:Passthrough<MyPanGesture> = .init()
         override func live(update: Update) {
             super.live(update:update)
-            onCreate { _ in
-                // passthru.sink { _ in print("🌸") }.store(in:self)
-            }
             onRequiredUpdateMake {
                 let threshold:Number = update.isPortrait ? 60% : 80%
                 Parent(insets:Theme.defaults.insets, options:.concentric)
@@ -56,6 +54,11 @@ class PanView : View, Live, Themeable {
                     .build {
                         PannableView(options:.concentric)
                             .in($0)
+                            // TBD: Attempt to eliminate problems animating
+                            // shape-based borders on orientation change.
+                            // May need to disable other places or provide
+                            // a general solution on orientation changes?
+                            // .disableAnimations
                             .applyTheme()
                             .make {
                                 Layer()
@@ -84,9 +87,9 @@ class PanView : View, Live, Themeable {
                     .onPan { [self] in $0
                         // Example using injected pipeline to relay gesture elsewhere.
                         // Injected pipeline can be used for other reactive integration.
-                        .send(to:passthru)
+                        .send(to:panUpdates)
                         // Example using vv custom gesture recognizer subclass.
-                    } action: { (pan:MyCustomPanGesture, view) in
+                    } action: { (pan:MyPanGesture, view) in
                         switch pan.state {
                         case .began :
                             break
@@ -123,7 +126,7 @@ class PanView : View, Live, Themeable {
                             break
                         }
                     }
-                    .direction(update.isPortrait ? .horizontal : .vertical)
+                    .direction(update.isPortrait ? .horizontal : .up)
                     .threshold(threshold)
                     .addGrabber {
                         $0.with(update.isPortrait ? 2 : 1) { $0.identifiable(Layer.self, id:"grabber") }
@@ -135,6 +138,18 @@ class PanView : View, Live, Themeable {
                     .in($0, options:.reusable, repeat:2)
                     .center()
                     .applyTheme()
+                    .show()
+                    .onReceive(
+                        panUpdates
+                            .compactMap { $0.probableDirection }
+                            .removeDuplicates()
+                    ) { $1
+                        .guard(update.isPortrait)?
+                        .switch($0, [
+                            .left : { $0.first { $0.hide() }.second { $0.show() } },
+                            .right : { $0.first { $0.show() }.second { $0.hide() } }
+                        ])
+                    }
                     .reference { $0.previous(Parent.self) }
                     .first { $0
                         .onPortrait { $0
@@ -145,10 +160,9 @@ class PanView : View, Live, Themeable {
                     }
                     .second { $0
                         .onPortrait { $0
-                            .show()
                             .x(threshold.invertPercentage())
                         } else: { $0
-                            .hide()
+                            .hide() // landscape doesn't need this line
                             .y(threshold)
                         }
                     }
@@ -248,7 +262,7 @@ class PanView : View, Live, Themeable {
                 }
                 .direction(update.isPortrait ? .right : .up)
                 .addGrabber {
-                    $0.with { $0.identifiable(Layer.self, id:"grabber" )}
+                    $0.with { $0.identifiable(Layer.self, id:"grabber" ) }
                 }
                 .addLimiter {
                     Layer()
@@ -435,6 +449,9 @@ class PanView : View, Live, Themeable {
                             .applyThemeAndFit()
                             .center()
                     }
+                    // Example storing query items weakly.
+                    // See onPan closure "strongify".
+                    .weakify
                 PannableView()
                     .in($0)
                     .inheritCorners() // not concentric
@@ -465,12 +482,15 @@ class PanView : View, Live, Themeable {
                             $0.show()
                         }
                     }
+                    //.console
                     .onPan { pan, view in
                         switch pan.state {
                         case .began :
                             break
                         case .changed :
                             parents
+                                // Example restoring query items strongly.
+                                .strongify?
                                 .animate { $0
                                     .resetTransform()
                                     .alpha(0.6)
@@ -492,6 +512,7 @@ class PanView : View, Live, Themeable {
                                 .commit()
                         case .ended :
                             parents
+                                .strongify?
                                 .animate { $0
                                     .resetTransform()
                                     .alpha(1.0)
