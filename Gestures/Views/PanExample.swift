@@ -9,6 +9,13 @@ import C3
 import Unilib
 import Combine
 
+// Device: Any device
+// Video: https://a.cl.ly/7KuqojOg
+// Test: visual match, follow pan gestures of video with matching behaviour
+// Test: orientation changes, light and dark mode (optional)
+
+// Repository: https://github.com/davidbjames/Gestures
+
 class PanView : View, Live, Themeable {
     private lazy var insets:InsetGroup = 10.0...50.0
     private lazy var spacing:OffsetPair = 3.0...17.0
