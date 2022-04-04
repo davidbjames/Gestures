@@ -42,8 +42,10 @@ extension NSObject : ExtendedStyleAccessible {
     public static var defaults = Theme.defaults
 }
 
-extension NSObject : ThemeAccessible {
+extension ThemeAccessible {
     public var defaultTheme:Theme {[
         
     ];}
 }
+extension UIView : ThemeAccessible {}
+extension CALayer : ThemeAccessible {}
