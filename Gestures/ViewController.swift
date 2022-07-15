@@ -9,8 +9,10 @@ import C3
 
 class GesturesVc : ExtendedViewController<Theme>, SafeLayout {
     func updateLayout(update: Update) {
-        PanView()
+        AppView()
             .in(view)
-            //.debugRuler(.grid)
+    }
+    override var prefersStatusBarHidden: Bool {
+        true 
     }
 }

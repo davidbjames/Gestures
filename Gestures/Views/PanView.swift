@@ -1,5 +1,5 @@
 //
-//  PanExample.swift
+//  PanView.swift
 //  Gestures
 //
 //  Created by David James on 2021-12-09.

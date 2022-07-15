@@ -34,12 +34,14 @@ extension Theme : ExtendedStyleAccessible {
     public static var colors = AppColors()
     public static var fonts = AppFonts()
     public static var defaults = AppStyleDefaults()
+    public static var builtInTheme = getBuiltInTheme()
 }
 
 extension NSObject : ExtendedStyleAccessible {
     public static var colors = Theme.colors
     public static var fonts = Theme.fonts
     public static var defaults = Theme.defaults
+    public static var builtInTheme = Theme.builtInTheme
 }
 
 extension ThemeAccessible {
