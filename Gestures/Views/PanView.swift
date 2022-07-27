@@ -624,62 +624,57 @@ class PanView : View, Live, Themeable {
                             }
                     }
             }
-            // Since multi-pans use snapshots which are created
-            // after rendering, make sure to defer the creation
-            // of the gesture itself.
-            .onRequiredUpdateDefer(0.5) { $0
+            .onMultiPan { [self] pan, views in
                 
-                .onMultiPan { [self] pan, views in
-                    
-                    switch pan.state {
-                    case .began :
-                        break
-                    case .changed :
-                        guard
-                            pan.targetHasChanged,
-                            let ordinal = pan.ordinal,
-                            let targetOrdinal = pan.targetOrdinal
-                        else { return }
-                        currentOrder = currentOrder.move(ordinal, after:targetOrdinal)
-                        views
-                            .animate { $0
-                                .aside(layout)
-                                .resetTransform()
-                                .select(ordinal:targetOrdinal)
-                                .scale(by:1.2)
-                            }
-                            .commit()
-                    case .ended :
-                        views
-                            .animate { $0
-                                .resetTransform()
-                            }
-                            .commit()
-                    default :
-                        break
-                    }
-                } snapshot: { pan, snapshot in
-                    switch pan.state {
-                    case .began :
-                        break
-                    case .changed :
-                        guard pan.targetHasChanged && pan.targetOrdinal.exists else { return }
-                        // Spin item whenever it cross over another item
-                        // snapshot.animate { $0.turn() }.commit()
-                    case .ended :
-                        // Remember that synchronization of snapshots' positions
-                        // has already occured at this point, so any further
-                        // position changes here will mess that up.
-                        break
-                    default :
-                        break
-                    }
+                switch pan.state {
+                case .began :
+                    break
+                case .changed :
+                    guard
+                        pan.targetHasChanged,
+                        let ordinal = pan.ordinal,
+                        let targetOrdinal = pan.targetOrdinal
+                    else { return }
+                    currentOrder = currentOrder.move(ordinal, after:targetOrdinal)
+                    views
+                        .animate { $0
+                            .aside(layout)
+                            .resetTransform()
+                            .select(ordinal:targetOrdinal)
+                            .scale(by:1.2)
+                        }
+                        .commit()
+                case .ended :
+                    views
+                        .animate { $0
+                            .resetTransform()
+                        }
+                        .commit()
+                default :
+                    break
                 }
-                .addLimiter {
-                    $0.parent
+            } snapshot: { pan, snapshot in
+                switch pan.state {
+                case .began :
+                    break
+                case .changed :
+                    guard pan.targetHasChanged && pan.targetOrdinal.exists else { return }
+                    // Spin item whenever it cross over another item
+                    // snapshot.animate { $0.turn() }.commit()
+                case .ended :
+                    // Remember that synchronization of snapshots' positions
+                    // has already occured at this point, so any further
+                    // position changes here will mess that up.
+                    break
+                default :
+                    break
                 }
-                .subscribe(.restartable)
             }
+            .deferredSnapshotting
+            .addLimiter {
+                $0.parent
+            }
+            .subscribe(.restartable)
         }
     }
     class Example : View, Live {
