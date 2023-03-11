@@ -7,7 +7,7 @@
 
 import C3
 
-class GesturesVc : ExtendedViewController<Theme>, SafeLayout {
+class GesturesVc : ViewController, SafeLayout {
     func updateLayout(update: Update) {
         AppView()
             .in(view)
