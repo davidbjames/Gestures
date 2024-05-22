@@ -4,10 +4,4 @@
    <FileRef
       location = "container:Gestures.xcodeproj">
    </FileRef>
-   <FileRef
-      location = "group:../C3/C3.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:../Unilib/Unilib.xcodeproj">
-   </FileRef>
 </Workspace>

@@ -1,0 +1,15 @@
+{
+  "originHash" : "c8ce54d452ede4866de7be6f9c0617f870781bcb3afff980421ec7d32b2d9627",
+  "pins" : [
+    {
+      "identity" : "c3",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/davidbjames/C3",
+      "state" : {
+        "branch" : "master",
+        "revision" : "33b681002ba43c9c397ab53d8342aa969ef6c86b"
+      }
+    }
+  ],
+  "version" : 3
+}

@@ -6,7 +6,6 @@
 //
 
 import C3
-import Unilib
 
 /// "Playground" for testing various gesture recognizers.
 ///
